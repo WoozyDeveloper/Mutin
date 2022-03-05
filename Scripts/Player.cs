@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
         GyroControl.transform.position = transform.position;
         transform.SetParent(GyroControl.transform);
         gyroEnabled = EnableGyro();
-        adjustrot = Quaternion.Euler(90f, 0f, 0f) * Quaternion.Inverse(gyro.attitude);
+        adjustrot = Quaternion.Euler(0f, -90f, -90f) * Quaternion.Inverse(gyro.attitude);
     }
 
     private bool EnableGyro()
@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
         {
             if (Input.touchCount == 3)
             {
-                adjustrot = Quaternion.Euler(90f, 0f, 0f) * Quaternion.Inverse(gyro.attitude);
+                adjustrot = Quaternion.Euler(0f, -90f, -90f) * Quaternion.Inverse(gyro.attitude);
             }
             transform.localRotation = adjustrot * gyro.attitude * rot;
         }
