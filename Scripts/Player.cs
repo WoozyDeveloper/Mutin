@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     public Image scopeImg;
     public Button scopeButton, fireButton;
 
+
+    private Camera camera;
     private bool gyroEnabled;
     private Gyroscope gyro;
     private GameObject GyroControl;
@@ -18,6 +20,8 @@ public class Player : MonoBehaviour
 
     public void ScopePress()
     {
+        camera.fieldOfView = 10;
+
         scopeImg.enabled = true;
         scopeButton.GetComponent<Image>().enabled = false;
         fireButton.GetComponent<Image>().enabled = true;
@@ -25,6 +29,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        camera = GetComponent<Camera>();
         scopeImg.enabled = false;
         player = GetComponent<GameObject>();
         fireButton.GetComponent<Image>().enabled = false;
